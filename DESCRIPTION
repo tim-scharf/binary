@@ -10,5 +10,7 @@ Description: This package is built for bianry classification
     Learns instance weights
 License: Will sue you in People's court or Judge Judy if you use it
 LazyData: TRUE
-Imports: xgboost,
+Imports:
+    xgboost,
     data.table
+RoxygenNote: 5.0.1
