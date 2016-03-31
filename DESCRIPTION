@@ -1,0 +1,10 @@
+Package: binary
+Type: Package
+Title: Aggressive Binary Classification with instance weighting
+Version: 0.1
+Date: 2016-03-31
+Author: Timothy Scharf
+Maintainer: Who to complain to <scharf.timothy@gmail.com>
+Description: This package is built for bianry classification  Intelligently blends mulitple classifiers  Learns instance weights
+License: Will sue you in People's court or Judge Judy if you use it
+LazyData: TRUE
