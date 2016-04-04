@@ -22,4 +22,7 @@ list PCV cv predictions, PT training predictions, IDX,
 \description{
 init_OUPUT
 }
+\examples{
+OUPUT <- init_OUPUT(1000,1000,100,.25)
+}
 

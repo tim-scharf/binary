@@ -17,10 +17,10 @@ xgb_train_binary_linear <- function(Xtrain,Xtest,y,iter,pct_train){
       eval_metric      =   'logloss', 
       nrounds          =   1000,
       eta              =   1,
-      lambda           =   runif(1,0,2), 
-      alpha            =   runif(1,0,2),
+      lambda           =   runif(1,0,3), 
+      alpha            =   runif(1,0,3),
       lambda_bias      =   0, 
-      base_score       =   runif(1, .5,.8),
+      base_score       =   .5,
       nthread          =   13)
     
     model <- xgb.train(
@@ -31,7 +31,7 @@ xgb_train_binary_linear <- function(Xtrain,Xtest,y,iter,pct_train){
       data              = dtrain,
       nrounds           = param$nrounds,
       maximize          = F,
-      verbose  =  1 )
+      verbose           = 1)
     
     OUTPUT$PCV[-idx,i]    <-   predict(model, newdata = dvalid)
     OUTPUT$PT[,i]         <-   predict(model, newdata = dtest)

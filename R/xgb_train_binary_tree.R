@@ -6,7 +6,7 @@ xgb_train_binary_tree <- function(Xtrain,Xtest,y,iter,pct_train){
   OUTPUT <- init_OUPUT(n_train,n_test,iter,pct_train)
   
   # get missing attr
-  missing <-  attr(Xtrain,'missing')
+  missing <-  NA
   dtest <- xgb.DMatrix(Xtest, missing = missing)
   
   for(i in 1:iter){
@@ -26,14 +26,14 @@ xgb_train_binary_tree <- function(Xtrain,Xtest,y,iter,pct_train){
     booster          =   'gbtree',
     objective        =   'binary:logistic',
     eval_metric      =   'logloss', 
-    max.depth        =   sample(3:10, 1), 
-    eta              =   runif(1,.01,.1),
-    gamma            =   runif(1,0,5),
-    min_child_weight =   runif(1,0,5),
+    max.depth        =   sample(2:6, 1), 
+    eta              =   .005,
+    gamma            =   runif(1,0,.5),
+    min_child_weight =   runif(1,0,.5),
     subsample        =   runif(1,.4,.6),
     colsample_bytree =   runif(1,.3,.7),
     nrounds          =   1000,
-    lambda           =   runif(1,0,3),  ##tree default 1 related?
+    lambda           =   runif(1,0,2),  ##tree default 1 related?
     alpha            =   0,                 ## tree related?
     base_score       =   mean(y),
     nthread          =   12 )
@@ -58,5 +58,7 @@ xgb_train_binary_tree <- function(Xtrain,Xtest,y,iter,pct_train){
 
 }
 
+  
+  
 return(OUTPUT)
 }
