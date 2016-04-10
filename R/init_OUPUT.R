@@ -12,6 +12,8 @@
 #' @export
 #'
 #' @examples OUPUT <- init_OUPUT(1000,1000,100,.25)
+#'
+#'
 init_OUPUT <- function(n_train_full,n_test_full,iter,pct_train){
   #initialize input matrices
   n_train_samp  <- round(pct_train * n_train_full)
