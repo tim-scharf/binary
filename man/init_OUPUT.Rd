@@ -13,16 +13,17 @@ init_OUPUT(n_train_full, n_test_full, iter, pct_train)
 
 \item{iter}{how many iterations to run}
 
-\item{pct_train}{what % to train on (10-25% current use)}
+\item{pct_train}{what PCT 0,1 to train on)}
 }
 \value{
-list PCV cv predictions, PT training predictions, IDX,
-    training indices, DATA meta data from training
+list PCV cv predictions
 }
 \description{
 init_OUPUT
 }
 \examples{
 OUPUT <- init_OUPUT(1000,1000,100,.25)
+
+
 }
 

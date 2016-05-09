@@ -12,5 +12,6 @@ License: Will sue you in People's court or Judge Judy if you use it
 LazyData: TRUE
 Imports:
     xgboost,
-    data.table
+    data.table,
+    feather
 RoxygenNote: 5.0.1
