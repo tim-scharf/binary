@@ -13,13 +13,18 @@
 #' @examples OUPUT <- init_OUPUT(1000,1000,100,.25)
 #'
 #'
-init_OUPUT <- function(n_train_full,n_test_full,iter,pct_train){
+init_OUPUT <- function(n_train,iter,pct_train,n_test=NULL){
   #initialize input matrices
-  n_train_samp  <- round(pct_train * n_train_full)
+  n_samp  <- round( pct_train * n_train )
 
-  return(list(
-  PCV   = matrix(NA_real_,  nrow  =  n_train_full, ncol = iter),  # matrix n * m <== n * m ?? dumb
-  PT    = matrix(NA_real_,  nrow =  n_test_full, ncol = iter),
-  IDX   =  sapply( 1:iter,function(z) sample(n_train_full,n_train_samp)),
-  DATA  = vector(mode='list',length=iter)))
+  PCV   = matrix(NA_real_,  nrow  =  n_train, ncol = iter)
+  IDX   = sapply( 1:iter,function(z) sample(n_train,n_samp))
+  DATA  = vector(mode='list',length=iter)
+  PT    = NULL
+  if(!is.null(n_test)){  PT    = matrix(NA_real_,  nrow =  n_test , ncol = iter)}
+  L = list(PCV=PCV,
+           IDX=IDX,
+           DATA=DATA,
+           PT=PT)
+  return(L)
 }

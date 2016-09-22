@@ -13,22 +13,21 @@
 #'
 #' @examples
 classifier_loop <- function(Xtrain.feather,
-                            y.feather,
-                            Xtest.feather,
-                            data_checks_func,
+                            y.rds,
                             train_func,
                             iter,
-                            pct_train){
+                            pct_train,
+                            Xtest.feather = NULL,
+                            w = NULL){
 
 #get data and do checks
-Xtrain <- readRDS(Xtrain.feather)
-Xtest  <- readRDS(Xtest.feather)
-y <- readRDS(y.feather)
-data_checks_func(Xtrain,Xtest,y)
+Xtrain <- setDT(read_feather(Xtrain.feather))
+y <- readRDS(y.rds)
+Xtest <- NULL
+if(! is.null(Xtest.feather)) { Xtest <- setDT(read_feather(Xtest.feather)) }
 
 #initialize output
-
-OUTPUT <- train_func(Xtrain,Xtest,y,iter,pct_train)
+OUTPUT <- train_func(Xtrain = Xtrain, Xtest = Xtest,y = y ,iter = iter,pct_train = pct_train,w = w)
 
 }
 
